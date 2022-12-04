@@ -1,3 +1,34 @@
-<app-server></app-server>
-<app-server></app-server>
-<app-server></app-server>
+<h3>Servers group name: {{ serversGroupName }}</h3>
+<label>Type here the name for the servers group</label>
+<input type="text" class="form-control" [(ngModel)]="serversGroupName" />
+<hr />
+
+<button
+  class="btn btn-primary"
+  [disabled]="!allowNewServer"
+  (click)="onCreateServer()"
+>
+  add new server
+</button>
+<ng-template #noServer><p class="serverP">No server created</p></ng-template>
+<p class="serverP" *ngIf="isServerCreated; else noServer">
+  ! New server created !
+</p>
+<app-server *ngFor="let server of servers"></app-server>
+<hr />
+
+<h3>Current User: {{ currentUserName }}</h3>
+<label>Insert new user name here</label>
+<input
+  type="text"
+  class="form-control usernameInput"
+  [(ngModel)]="currentUserName"
+  (input)="onUpdateUserName()"
+/>
+<button
+  class="btn btn-primary resetUserNameBtn"
+  [disabled]="isUserNameEmpty"
+  (click)="resetUserName()"
+>
+  Reset user name
+</button>

@@ -1,1 +1,8 @@
-<p>server works!</p>
+<p>
+  server with ID {{ serverId }} is
+  <span
+    [ngStyle]="{ color: getServerColor() }"
+    [ngClass]="{ offline: serverStatus === 'offline' }"
+    >{{ getServerStatus() }}</span
+  >
+</p>
