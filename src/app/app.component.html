@@ -1,1 +1,25 @@
+<div class="container">
+  <button
+    class="btn btn-warning"
+    (click)="onShowDetails()"
+    *ngIf="!show; else hide"
+  >
+    Show details
+  </button>
+  <ng-template #hide>
+    <button class="btn btn-warning" (click)="onShowDetails()">
+      Hide details
+    </button>
+  </ng-template>
 
+  <p *ngIf="show">Secret passwor: MUDU</p>
+
+  <!-- <li *ngFor="let click of clicks" [ngStyle]="{ color: getColor() }"> -->
+  <p
+    *ngFor="let click of clicks"
+    [ngStyle]="{ backgroundColor: click > 4 ? 'black' : 'transparent' }"
+    [ngClass]="{ click5: click > 4 }"
+  >
+    {{ click }}
+  </p>
+</div>
